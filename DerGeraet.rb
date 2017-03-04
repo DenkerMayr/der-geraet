@@ -23,6 +23,17 @@ bot.command(:randomcat) do |event|
 	event.respond contents
 end
 
+bot.command(:play) do |event|
+	#bot.send_message(event.channel.id, 'Should start playing any moment now')
+	channel = event.user.voice_channel
+	next bot.send_message(event.channel.id, 'You\'re not in any voice channel!') unless channel
+	bot.voice_connect(channel)
+  #bot.send_message(event.channel.id, 'Connected to voice channel: ' + channel.name)
+
+	voice_bot = event.voice
+  voice_bot.play_file('data/music.mp3')
+end
+
 bot.command(:exit) do |event|
   # This is a check that only allows a user with a specific ID to execute this command. Otherwise, everyone would be
   # able to shut your bot down whenever they wanted.
