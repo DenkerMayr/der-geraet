@@ -1,5 +1,6 @@
 #::RBNACL_LIBSODIUM_GEM_LIB_PATH = "D:/Ruby/Dependencies/Discord/libsodium.dll"
 require 'discordrb'
+require 'open-uri'
 
 bot = Discordrb::Commands::CommandBot.new token: 'Mjg2OTU2NzU0MjUwNDk4MDQ5.C5oRXA.yLI0pJcpWJfF8qJYKNKUIAlwGVM', client_id: 286956754250498049, prefix: '+'
 
@@ -13,7 +14,16 @@ bot.message(with_text: 'Dominik') do |event|
 	event.respond 'Hallo Dominik!'
 end
 
-bot.command(:exit, help_available: false) do |event|
+bot.command(:randomcat) do |event|
+  file = open('http://random.cat/meow')
+  contents = file.read
+  contents.gsub!("{\"file\":\"", "")
+  contents.gsub!("\\/", "/")
+  contents.gsub!("\"}", "")
+	event.respond contents
+end
+
+bot.command(:exit) do |event|
   # This is a check that only allows a user with a specific ID to execute this command. Otherwise, everyone would be
   # able to shut your bot down whenever they wanted.
   break unless event.user.id == 173752508265660416 # Replace number with your ID
