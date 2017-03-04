@@ -1,11 +1,11 @@
-::RBNACL_LIBSODIUM_GEM_LIB_PATH = "D:/Ruby/Dependencies/Discord/libsodium.dll"
+#::RBNACL_LIBSODIUM_GEM_LIB_PATH = "D:/Ruby/Dependencies/Discord/libsodium.dll"
 require 'discordrb'
 
-bot = Discordrb::Commands::CommandBot.new token: 'Mjg2OTU2NzU0MjUwNDk4MDQ5.C5oRXA.yLI0pJcpWJfF8qJYKNKUIAlwGVM', client_id: 286956754250498049, prefix: '!'
+bot = Discordrb::Commands::CommandBot.new token: 'Mjg2OTU2NzU0MjUwNDk4MDQ5.C5oRXA.yLI0pJcpWJfF8qJYKNKUIAlwGVM', client_id: 286956754250498049, prefix: '+'
 
 # This method call adds an event handler that will be called on any message that exactly contains the string "Ping!".
 # The code inside it will be executed, and a "Pong!" response will be sent to the channel.
-bot.message(with_text: 'Ping!') do |event| 
+bot.message(with_text: 'Ping!') do |event|
 	event.respond 'Pong!'
 end
 
