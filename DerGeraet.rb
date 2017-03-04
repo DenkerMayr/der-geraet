@@ -1,4 +1,4 @@
-#::RBNACL_LIBSODIUM_GEM_LIB_PATH = "D:/Ruby/Dependencies/Discord/libsodium.dll"
+::RBNACL_LIBSODIUM_GEM_LIB_PATH = "libsodium.dll"
 require 'discordrb'
 require 'open-uri'
 require 'certified'
@@ -31,13 +31,14 @@ bot.command(:randomcat) do |event|
 	event.respond contents
 end
 
-bot.command(:play) do |event|
-	#bot.send_message(event.channel.id, 'Should start playing any moment now')
+bot.command(:voice) do |event|
 	channel = event.user.voice_channel
 	next bot.send_message(event.channel.id, 'You\'re not in any voice channel!') unless channel
 	bot.voice_connect(channel)
-  #bot.send_message(event.channel.id, 'Connected to voice channel: ' + channel.name)
+	bot.send_message(event.channel.id, "Bot now connected to the voice channel #{channel.name}")
+end
 
+bot.command(:play) do |event|
 	voice_bot = event.voice
   voice_bot.play_file('data/music.mp3')
 end
