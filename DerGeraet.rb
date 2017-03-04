@@ -31,6 +31,7 @@ bot.command(:dice, min_args: 1, max_args: 1) do |event, dice_num|
   event.respond contents
   end
 
+
 bot.command(:exit) do |event|
   # This is a check that only allows a user with a specific ID to execute this command. Otherwise, everyone would be
   # able to shut your bot down whenever they wanted.
