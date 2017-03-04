@@ -1,6 +1,7 @@
 #::RBNACL_LIBSODIUM_GEM_LIB_PATH = "D:/Ruby/Dependencies/Discord/libsodium.dll"
 require 'discordrb'
 require 'open-uri'
+require 'certified'
 
 bot = Discordrb::Commands::CommandBot.new token: 'Mjg2OTU2NzU0MjUwNDk4MDQ5.C5oRXA.yLI0pJcpWJfF8qJYKNKUIAlwGVM', client_id: 286956754250498049, prefix: '+'
 
@@ -22,6 +23,13 @@ bot.command(:randomcat) do |event|
   contents.gsub!("\"}", "")
 	event.respond contents
 end
+
+bot.command(:dice, min_args: 1, max_args: 1) do |event, dice_num|
+  URL = "https://www.random.org/integers/?num=1&min=1&max=#{dice_num}&col=1&base=10&format=plain&rnd=new"
+  file = open(URL)
+  contents = file.read
+  event.respond contents
+  end
 
 bot.command(:exit) do |event|
   # This is a check that only allows a user with a specific ID to execute this command. Otherwise, everyone would be
