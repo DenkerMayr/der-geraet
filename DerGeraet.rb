@@ -15,6 +15,13 @@ bot.message(with_text: 'Dominik') do |event|
 	event.respond 'Hallo Dominik!'
 end
 
+bot.command(:cmd) do |event|
+  event.respond '+cmd : gives this window.'
+  event.respond '+randomcat : Gives random cats. <3'
+  event.respond '+dice <int> : Let\'s roll some dice.' 
+  event.respond '+exit : Closes bot.'
+  end
+
 bot.command(:randomcat) do |event|
   file = open('http://random.cat/meow')
   contents = file.read
@@ -30,7 +37,6 @@ bot.command(:dice, min_args: 1, max_args: 1) do |event, dice_num|
   contents = file.read
   event.respond contents
   end
-
 
 bot.command(:exit) do |event|
   # This is a check that only allows a user with a specific ID to execute this command. Otherwise, everyone would be
