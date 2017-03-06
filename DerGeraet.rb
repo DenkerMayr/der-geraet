@@ -60,8 +60,8 @@ end
 
 bot.command(:timer_end) do |event|
   if time_start != 0
-    time_end = Time.now
-    time = calc_time(time_start,time_end)
+    #time_end = Time.now
+    time = calc_time(time_start,Time.now)
     time_start = 0
     event.respond time
   else
@@ -70,8 +70,8 @@ bot.command(:timer_end) do |event|
 end
 
 bot.command(:uptime) do |event|
-  time_end = Time.now
- event.respond calc_time(uptime_counter,time_end)
+  #time_end = Time.now
+  event.respond calc_time(uptime_counter,Time.now)
 end
 
 bot.command(:randomcat) do |event|
